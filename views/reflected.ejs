@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/sakura.css" type="text/css" />
+    <title>CIST IT XSS - reflection</title>
+  </head>
+  <body>
+    <h1>Reflected XSS</h1>
+
+    <div style="margin: 5rem 0">
+      <section>
+        <form method="get">
+          <input placeholder="検索ワードを入力" name="search_word" />
+          <input type="submit" />
+        </form>
+      </section>
+      <% if (search_word) {%>
+      <section>
+        <h3>「<%- search_word %>」の検索結果</h3>
+        <p>検索結果はありません</p>
+      </section>
+      <% } %>
+    </div>
+  </body>
+</html>
